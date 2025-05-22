@@ -4,6 +4,7 @@ body {
     background-size: cover; /* 画像を画面全体に拡大 */
     background-position: center; /* 画像を中央に配置 */
     color: #333;
+    position: relative;
     margin: 0;
     padding: 20px;
 }
