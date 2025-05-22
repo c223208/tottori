@@ -1,0 +1,36 @@
+    body {
+      margin: 0;
+      height: 100vh;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/f/f3/Tottori_20151229144508_%2825282451043%29.jpg');
+      background-size: cover; /* 画像を画面全体に拡大 */
+      background-position: center; /* 画像を中央に配置 */
+      overflow: hidden;
+      position: relative;
+      font-family: sans-serif;
+    }
+
+    .circle {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background-color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      animation: float 6s ease-in-out infinite;
+      transition: transform 0.2s;
+    }
+
+    .circle:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
