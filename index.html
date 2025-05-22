@@ -8,7 +8,9 @@
     body {
       margin: 0;
       height: 100vh;
-      background: #e0f7fa;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/f/f3/Tottori_20151229144508_%2825282451043%29.jpg');
+      background-size: cover; /* 画像を画面全体に拡大 */
+      background-position: center; /* 画像を中央に配置 */
       overflow: hidden;
       position: relative;
       font-family: sans-serif;
@@ -44,24 +46,44 @@
 <body>
   <script>
     const titles = [
-      { text: \"鳥取県の概要\", link: \"content1.html\" },
-      { text: \"訪問先「」\", link: \"content2.html\" },
-      { text: \"見学内容\", link: \"content3.html\" },
-      { text: \"スケジュール案\", link: \"content4.html\" },
-      { text: \"観光プラン\", link: \"content5.html\" },
-      { text: \"学習成果\", link: \"content6.html\" },
-      { text: \"費用\", link: \"content7.html\" },
-      { text: \"アクセス\", link: \"content8.html\" }
+      { text: "鳥取県の概要", link: "content1.html" },
+      { text: "訪問先", link: "content2.html" },
+      { text: "見学内容", link: "content3.html" },
+      { text: "スケジュール案", link: "content4.html" },
+      { text: "観光プラン", link: "content5.html" },
+      { text: "学習成果", link: "content6.html" },
+      { text: "費用", link: "content7.html" },
+      { text: "アクセス", link: "content8.html" }
     ];
 
-    titles.forEach((item, i) => {
-      const circle = document.createElement(\"div\");
-      circle.className = \"circle\";
+    const circles = [];
+
+    const isOverlapping = (newCircle) => {
+      return circles.some(circle => {
+        const dx = newCircle.x - circle.x;
+        const dy = newCircle.y - circle.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        return distance < 150; // 150は円の直径
+      });
+    };
+
+    titles.forEach((item) => {
+      let position;
+      do {
+        position = {
+          x: Math.random() * (window.innerWidth - 150),
+          y: Math.random() * (window.innerHeight - 150)
+        };
+      } while (isOverlapping(position));
+
+      const circle = document.createElement("div");
+      circle.className = "circle";
       circle.innerText = item.text;
-      circle.style.top = `${10 + Math.random() * 70}%`;
-      circle.style.left = `${10 + Math.random() * 70}%`;
+      circle.style.left = `${position.x}px`;
+      circle.style.top = `${position.y}px`;
       circle.onclick = () => window.location.href = item.link;
       document.body.appendChild(circle);
+      circles.push(position);
     });
   </script>
 </body>
