@@ -30,3 +30,18 @@ h2 {
 p {
     line-height: 1.6;
 }
+
+.content {
+display: flex;
+}
+.text {
+flex: 2; /* 左側のテキスト部分 */
+padding-right: 20px;
+}
+.image {
+flex: 1; /* 右側の画像部分 */
+}
+.image img {
+max-width: 100%; /* 画像をレスポンシブに */
+height: auto;
+}
