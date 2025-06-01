@@ -9,5 +9,5 @@ function showSlides() {
     slideIndex++;
     if (slideIndex > slides.length) {slideIndex = 1}    
     slides[slideIndex - 1].style.display = "block";  
-    setTimeout(showSlides, 3000); // 3秒ごとにスライドを切り替え
+    setTimeout(showSlides, 10000); // 10秒ごとにスライドを切り替え
 }
