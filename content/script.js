@@ -1,10 +1,13 @@
 let slideIndex = 0;
-const slides = document.querySelectorAll('.slides');
+showSlides();
 
 function showSlides() {
-    slides.forEach((slide) => slide.classList.remove('active'));
-    slideIndex = (slideIndex + 1) % slides.length;
-    slides[slideIndex].classList.add('active');
+    let slides = document.getElementsByClassName("slides");
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}    
+    slides[slideIndex - 1].style.display = "block";  
+    setTimeout(showSlides, 3000); // 3秒ごとにスライドを切り替え
 }
-
-setInterval(showSlides, 3000); // 3秒ごとにスライドを変更
